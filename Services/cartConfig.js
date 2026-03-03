@@ -1,5 +1,6 @@
 // services/cartConfig.js
-require("dotenv").config();
+// NOTE: environment variables are loaded once in `Server.js` using dotenv.
+// Do not call `require("dotenv").config()` here to avoid duplicate loading/logging.
 
 // Check for critical configuration
 if (!process.env.API_KEY) {

@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const cron = require("node-cron");
 const axios = require("axios");
 const { DateTime } = require("luxon");
-require("dotenv").config();
+require("dotenv").config({ quiet: true });
 
 // Import routes
 const cartFetcherRoutes = require("./Routes/cartFetcher.routes");
@@ -46,12 +46,8 @@ if (NODE_ENV === "development") {
   app.use(morgan("combined"));
 }
 
-// Connect to MongoDB
 mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(MONGO_URI)
   .then(() => {
     console.log("✅ Connected to MongoDB");
   })
